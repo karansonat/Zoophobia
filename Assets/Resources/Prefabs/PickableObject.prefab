@@ -132,7 +132,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db46b4e69ff844289b12931054fc5b04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventoryObjectPrefab: {fileID: 0}
+  inventoryObjectPrefab: {fileID: 120026, guid: dfcd49b5b008c4f7d99ea12dbd0fbf40,
+    type: 2}
   infoText: 'ex: Press E for action'
 --- !u!212 &21264240
 SpriteRenderer:
@@ -175,6 +176,10 @@ Prefab:
       propertyPath: infoText
       value: 'ex: Press E for action'
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: inventoryObjectPrefab
+      value: 
+      objectReference: {fileID: 120026, guid: dfcd49b5b008c4f7d99ea12dbd0fbf40, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 153262}
