@@ -9,11 +9,10 @@ public class PickableObject : MonoBehaviour, IActionObject {
     GameController _gameController;
     Inventory _inventory;
     GameObject _game;
-    
     public GameObject inventoryObjectPrefab;
     public string infoText = "ex: Press E for action";
-    
-    private GameObject _infoText;
+    public bool destroyAfterPickup = false;
+    private MeshRenderer _infoText;
     private bool _isInputAcceptable = false;
     private bool _isActionDescriptorShowing = false;
     
@@ -22,10 +21,9 @@ public class PickableObject : MonoBehaviour, IActionObject {
 	   _game = GameObject.Find("Game");
        _gameController = _game.GetComponent<GameController>();
        _inventory = _game.GetComponent<Inventory>();
-       _infoText = transform.GetChild(0).gameObject;
-       _infoText.GetComponent<TextMesh>().text = infoText;
-       
-       _infoText.SetActive(false);
+       _infoText = gameObject.GetComponentInChildren<MeshRenderer>();
+       _infoText.gameObject.GetComponent<TextMesh>().text = infoText;
+       _infoText.enabled = false;
 	}
     
 	void Update () {
@@ -41,15 +39,17 @@ public class PickableObject : MonoBehaviour, IActionObject {
             item.SetActive(false);
             _game.GetComponent<Inventory>().AddItemToInventory(item);    
         }
-        
+        if(destroyAfterPickup){
+            DestroyObjectAfterPickedUp();
+        }
     }
     public void ShowActionDescription(){
         _isInputAcceptable = true;
-        _infoText.SetActive(true);
+        _infoText.enabled = true;
     }
     public void HideActionDescription(){
         _isInputAcceptable = false;
-        _infoText.SetActive(false);
+        _infoText.enabled = false;
     }
     void OnTriggerEnter2D(Collider2D col){
         if(col.gameObject.tag == "Player"){
@@ -68,5 +68,9 @@ public class PickableObject : MonoBehaviour, IActionObject {
                 _isActionDescriptorShowing = false;
             }   
         }
+    }
+    
+    private void DestroyObjectAfterPickedUp(){
+        Destroy(gameObject);
     }
 }

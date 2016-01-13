@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 public class ThrowableObject : MonoBehaviour, IUsableObject {
     public GameObject aimIndicatorPrefab;
@@ -77,5 +78,9 @@ public class ThrowableObject : MonoBehaviour, IUsableObject {
     
     public void DestroyAimIndicator(){
         Destroy(_aimIndicator);
+    }
+
+    public void Cancel(){
+        DestroyAimIndicator();
     }
 }
