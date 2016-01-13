@@ -36,7 +36,6 @@ public class ThrowableObject : MonoBehaviour, IUsableObject {
         //croshair icin konum belirle.
         _aimIndicator = GameObject.Instantiate(aimIndicatorPrefab, _activePlayer.transform.position, aimIndicatorPrefab.transform.rotation) as GameObject;
         _aimIndicator.transform.parent = _activePlayer.transform;
-        // _actionController = _activePlayer.GetComponent<PlayerActionController>();
         _isItemReadyToUse = true;
         Debug.Log("Equip::end");
     }

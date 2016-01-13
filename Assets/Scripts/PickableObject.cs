@@ -67,11 +67,4 @@ public class PickableObject : MonoBehaviour, IActionObject {
         }
         
     }
-    private Vector3 getDirectionBetweenTwoPoint(Vector3 position1, Vector3 position2){
-        Vector3 direction;
-        var heading = position2 - position1;
-        var distance = heading.magnitude;
-        direction = heading/distance;
-        return direction;
-    }
 }
