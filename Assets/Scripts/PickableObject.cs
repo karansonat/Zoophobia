@@ -52,19 +52,21 @@ public class PickableObject : MonoBehaviour, IActionObject {
         _infoText.SetActive(false);
     }
     void OnTriggerEnter2D(Collider2D col){
-        Debug.Log("PickableObject::OnTriggerEnter");
-        if(!_isActionDescriptorShowing){
-            ShowActionDescription();
-            _isActionDescriptorShowing = true;   
+        if(col.gameObject.tag == "Player"){
+            Debug.Log("PickableObject::OnTriggerEnter");
+            if(!_isActionDescriptorShowing){
+                ShowActionDescription();
+                _isActionDescriptorShowing = true;   
+            }   
         }
-        
     }
     void OnTriggerExit2D(Collider2D col){
-        Debug.Log("PickableObject::OnTriggerExit");
-        if(_isActionDescriptorShowing){
-            HideActionDescription();
-            _isActionDescriptorShowing = false;
+        if(col.gameObject.tag == "Player"){
+            Debug.Log("PickableObject::OnTriggerExit");
+            if(_isActionDescriptorShowing){
+                HideActionDescription();
+                _isActionDescriptorShowing = false;
+            }   
         }
-        
     }
 }
