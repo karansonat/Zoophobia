@@ -6,6 +6,7 @@ public class PlayerActionController : MonoBehaviour {
     Inventory _inventory;
     GameController _gameController;
     public GameObject _equippedItem;
+    private GameObject _interactionObject;
     
     [HideInInspector]
     public bool isReadyForAction = false;
@@ -83,5 +84,12 @@ public class PlayerActionController : MonoBehaviour {
         _equippedItem.GetComponent<IUsableObject>().Cancel();
         _equippedItem = null;
         
+    }
+    
+    public GameObject getInteractionObject(){
+        return _interactionObject;
+    }
+    public void setInteractionObject(GameObject interactionObj){
+        _interactionObject = interactionObj;
     }
 }
