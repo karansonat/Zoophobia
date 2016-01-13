@@ -29,7 +29,7 @@ public class PlayerActionController : MonoBehaviour {
     
     private void Interact(){
         if(_equippedItem){
-            _equippedItem.GetComponent<IActionObject>().MakeAction();    
+            _equippedItem.GetComponent<IUsableObject>().MakeAction();    
         }
     }
     
@@ -40,7 +40,7 @@ public class PlayerActionController : MonoBehaviour {
                 _equippedItem = _inventory.getItemFromInventory(0);
                 if(_equippedItem){
                     _gameController.setActivePlayer(gameObject);
-                    _equippedItem.GetComponent<PickableObject>().Equip(gameObject);
+                    _equippedItem.GetComponent<ThrowableObject>().Equip(gameObject);
                 }
             }
             else if(Input.GetKeyDown(KeyCode.Alpha2)){
@@ -48,7 +48,7 @@ public class PlayerActionController : MonoBehaviour {
                 _equippedItem = _inventory.getItemFromInventory(1);
                 if(_equippedItem){
                     _gameController.setActivePlayer(gameObject);
-                    _equippedItem.GetComponent<PickableObject>().Equip(gameObject);
+                    _equippedItem.GetComponent<ThrowableObject>().Equip(gameObject);
                 }
             }
             else if(Input.GetKeyDown(KeyCode.Alpha3)){
@@ -56,12 +56,12 @@ public class PlayerActionController : MonoBehaviour {
                 _equippedItem = _inventory.getItemFromInventory(2);
                 if(_equippedItem){
                     _gameController.setActivePlayer(gameObject);
-                    _equippedItem.GetComponent<PickableObject>().Equip(gameObject);
+                    _equippedItem.GetComponent<ThrowableObject>().Equip(gameObject);
                 }
             }
             else if(Input.GetKeyDown(KeyCode.Escape)){
                 Debug.Log("EquipFromInventory::Cancel");
-                _equippedItem.GetComponent<PickableObject>().DestroyAimIndicator();
+                _equippedItem.GetComponent<ThrowableObject>().DestroyAimIndicator();
                 _equippedItem = null;
             }
             else if(Input.GetKeyDown(KeyCode.Backspace)){
@@ -77,7 +77,7 @@ public class PlayerActionController : MonoBehaviour {
         Debug.Log("PlayerActionController::unEquip");
         _inventory.getInventory()[_inventory.getInventory().IndexOf(_equippedItem)] = null;
         _equippedItem.transform.parent = null;
-        _equippedItem.GetComponent<PickableObject>().DestroyAimIndicator();
+        _equippedItem.GetComponent<ThrowableObject>().DestroyAimIndicator();
         _equippedItem = null;
         
     }
