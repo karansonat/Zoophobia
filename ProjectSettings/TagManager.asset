@@ -16,7 +16,7 @@ TagManager:
   - 
   - Players
   - Throwable
-  - 
+  - Special
   - 
   - 
   - 
@@ -41,4 +41,13 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: LevelBacground
+    uniqueID: 3136655199
+    locked: 0
+  - name: LevelItems
+    uniqueID: 1834204097
+    locked: 0
+  - name: Characters
+    uniqueID: 1033098633
     locked: 0
