@@ -10,8 +10,8 @@ public class PickableObject : MonoBehaviour, IActionObject {
     Inventory _inventory;
     GameObject _game;
     
-    public GameObject aimIndicatorPrefab;
-    public GameObject throwableObjectPrefab;
+    public GameObject inventoryObjectPrefab;
+    public string infoText = "ex: Press E for action";
     
     private GameObject _infoText;
     private bool _isInputAcceptable = false;
@@ -23,6 +23,7 @@ public class PickableObject : MonoBehaviour, IActionObject {
        _gameController = _game.GetComponent<GameController>();
        _inventory = _game.GetComponent<Inventory>();
        _infoText = transform.GetChild(0).gameObject;
+       _infoText.GetComponent<TextMesh>().text = infoText;
        
        _infoText.SetActive(false);
 	}
@@ -36,7 +37,7 @@ public class PickableObject : MonoBehaviour, IActionObject {
     }
     private void AddToPlayerInventory(){
         if(_inventory.hasEmptySlot()){
-            GameObject item = GameObject.Instantiate(throwableObjectPrefab, new Vector3(0,0,0), gameObject.transform.rotation) as GameObject;
+            GameObject item = GameObject.Instantiate(inventoryObjectPrefab, new Vector3(0,0,0), gameObject.transform.rotation) as GameObject;
             item.SetActive(false);
             _game.GetComponent<Inventory>().AddItemToInventory(item);    
         }
