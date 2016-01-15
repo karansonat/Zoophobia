@@ -3,14 +3,16 @@ using System.Collections;
 using System;
 
 public class ThrowableObject : MonoBehaviour, IUsableObject {
+    GameController _gameCon;
     public GameObject aimIndicatorPrefab;
     private bool _isItemReadyToUse = true;
     private int _actionState = -1;
     private GameObject _aimIndicator;
     private GameObject _activePlayer;
+    private bool _isObjectThrown = false;
 	// Use this for initialization
 	void Start () {
-	
+	   _gameCon = GameObject.Find("Game").GetComponent<GameController>();
 	}
 	
 	// Update is called once per frame
@@ -61,7 +63,6 @@ public class ThrowableObject : MonoBehaviour, IUsableObject {
             Debug.Log("PickableObject::Throw");
             Vector3 direction = getDirectionBetweenTwoPoint(_activePlayer.transform.position, _aimIndicator.transform.GetChild(0).transform.position);
             clone.GetComponent<Rigidbody2D>().AddForce(direction*500);   
-            
             _isItemReadyToUse = false;
             Destroy(_aimIndicator);
             clone.transform.parent = null;
@@ -82,5 +83,20 @@ public class ThrowableObject : MonoBehaviour, IUsableObject {
 
     public void Cancel(){
         DestroyAimIndicator();
+    }
+    
+    void OnCollisionEnter2D(Collision2D coll) {
+        if (coll.gameObject.tag == "LevelObstacles" && !_isObjectThrown)
+            MakeSound();
+    }
+    
+    private void MakeSound(){
+        _gameCon.onSoundHeard(transform.position);
+        _isObjectThrown = true;
+        DestroySelfWithDelay();
+    }
+    
+    private void DestroySelfWithDelay(){
+        Destroy(gameObject, 3.0f);
     }
 }
