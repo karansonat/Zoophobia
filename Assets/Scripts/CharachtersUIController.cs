@@ -11,7 +11,7 @@ public class CharachtersUIController : MonoBehaviour {
     public static float _CARRY_X = 70f;
 	public static float _CARRY_Y = -110f;
     public static float _CARRIED_X = 70f;
-	public static float _CARRIED_Y = -50f;
+	public static float _CARRIED_Y = -30f;
 	public static float _SEPERATED_MONKEY_X = 20;
 	public static float _SEPERATED_MONKEY_Y = -70;
 	public static float _SEPERATED_SLOTH_X = 120;
