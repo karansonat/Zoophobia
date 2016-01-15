@@ -33,13 +33,14 @@ GameObject:
   - 114: {fileID: 11476164}
   - 61: {fileID: 6190672}
   - 114: {fileID: 11494562}
+  - 61: {fileID: 6134138}
   m_Layer: 8
   m_Name: Sloth
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &192184
 GameObject:
   m_ObjectHideFlags: 0
@@ -89,7 +90,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 191118}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.42, y: -0.2, z: 0}
+  m_LocalPosition: {x: -3.35, y: -0.23, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 428084}
@@ -175,9 +176,23 @@ CircleCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: 0, y: -1.51}
+  m_Offset: {x: 0, y: -0.47}
   serializedVersion: 2
-  m_Radius: 1
+  m_Radius: 0.35
+--- !u!61 &6134138
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 191118}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 1.5, y: 1}
 --- !u!61 &6190672
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -189,9 +204,9 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 0.53}
+  m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Size: {x: 3, y: 2}
+  m_Size: {x: 0.75, y: 0.75}
 --- !u!95 &9593508
 Animator:
   serializedVersion: 3
@@ -241,8 +256,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d08f91df3bd212f429df17f53ce2f364, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_MaxSpeed: 10
-  m_JumpForce: 800
+  m_MaxSpeed: 1
+  m_JumpForce: 200
   m_CrouchSpeed: 0.25
   m_AirControl: 1
   m_WhatIsGround:
