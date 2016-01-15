@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System;
 using System.Collections;
 
 public class PlayerActionController : MonoBehaviour {
@@ -42,9 +43,13 @@ public class PlayerActionController : MonoBehaviour {
                 Debug.Log("EquipFromInventory::Slot1");
                 if(_equippedItem){_equippedItem.GetComponent<IUsableObject>().Cancel();}
                 _equippedItem = _inventory.getItemFromInventory(0);
-                if(_equippedItem){
+                _equippedItem.SetActive(true);
+                if(_equippedItem.GetComponent<ThrowableObject>() != null ? _equippedItem && gameObject.name == "Sloth"  : _equippedItem){
                     _gameController.setActivePlayer(gameObject);
                     _equippedItem.GetComponent<IUsableObject>().Equip(gameObject);
+                    _equippedItem.SetActive(false);
+                }else{
+                    _equippedItem.SetActive(false);
                 }
             }
             else if(Input.GetKeyDown(KeyCode.Alpha2)){

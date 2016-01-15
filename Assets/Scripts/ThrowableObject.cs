@@ -3,6 +3,7 @@ using System.Collections;
 using System;
 
 public class ThrowableObject : MonoBehaviour, IUsableObject {
+    Flow _flow;
     GameController _gameCon;
     public GameObject aimIndicatorPrefab;
     private bool _isItemReadyToUse = true;
@@ -10,9 +11,12 @@ public class ThrowableObject : MonoBehaviour, IUsableObject {
     private GameObject _aimIndicator;
     private GameObject _activePlayer;
     private bool _isObjectThrown = false;
+    [HideInInspector]
+    public string whoCanUse = "Sloth";
 	// Use this for initialization
-	void Start () {
-	   _gameCon = GameObject.Find("Game").GetComponent<GameController>();
+	
+    
+    void Start () {
 	}
 	
 	// Update is called once per frame
@@ -31,6 +35,7 @@ public class ThrowableObject : MonoBehaviour, IUsableObject {
         }
     }
     public void Equip(GameObject activePlayer){
+
         Debug.Log("Equip");
         _activePlayer = activePlayer;
         //TODO: objecyi aktif et playerin uzerine konumlandir
@@ -40,7 +45,7 @@ public class ThrowableObject : MonoBehaviour, IUsableObject {
         _aimIndicator = GameObject.Instantiate(aimIndicatorPrefab, _activePlayer.transform.position, aimIndicatorPrefab.transform.rotation) as GameObject;
         _aimIndicator.transform.parent = _activePlayer.transform;
         _isItemReadyToUse = true;
-        Debug.Log("Equip::end");
+        Debug.Log("Equip::end");   
     }
     
     private void Aim(){
@@ -91,6 +96,7 @@ public class ThrowableObject : MonoBehaviour, IUsableObject {
     }
     
     private void MakeSound(){
+        _gameCon = GameObject.Find("Game").GetComponent<GameController>();
         _gameCon.onSoundHeard(transform.position);
         _isObjectThrown = true;
         DestroySelfWithDelay();

@@ -71,6 +71,7 @@ public class GuardAI : MonoBehaviour {
         if(_isSlothOutOfHisCage){
             Debug.Log("GuardAI::_isSlothOutOfHisCage::true");
             MoveTo(_sloth.transform.position);
+            _isSlothOutOfHisCage = false;
         }else{
             Debug.Log("GuardAI::_isSlothOutOfHisCage::false");
             if(_moveToTargetReached){
@@ -90,7 +91,6 @@ public class GuardAI : MonoBehaviour {
         if(_isSlothOutOfHisCage){
             _guardFlow = GUARD_AI.ON_ALERT;
             _noticedTimeCounter = 0;
-            _isSlothOutOfHisCage = false;
         }
         else if(_noticedTimeCounter >= 5.0f){
             goToSleep();
