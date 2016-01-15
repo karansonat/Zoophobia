@@ -128,6 +128,30 @@ Prefab:
       propertyPath: m_RootOrder
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 100232, guid: 049819c4ca95be74ba9cdbb7f661e22a, type: 2}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 137976, guid: 049819c4ca95be74ba9cdbb7f661e22a, type: 2}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 169582, guid: 049819c4ca95be74ba9cdbb7f661e22a, type: 2}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 144508, guid: 049819c4ca95be74ba9cdbb7f661e22a, type: 2}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 11427272, guid: 049819c4ca95be74ba9cdbb7f661e22a, type: 2}
+      propertyPath: m_MaxSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 11427272, guid: 049819c4ca95be74ba9cdbb7f661e22a, type: 2}
+      propertyPath: m_JumpForce
+      value: 200
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 049819c4ca95be74ba9cdbb7f661e22a, type: 2}
   m_IsPrefabParent: 0
@@ -170,6 +194,14 @@ Prefab:
       propertyPath: m_RootOrder
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 11408986, guid: c1993f35cc832d944841fed0e441d5e4, type: 2}
+      propertyPath: m_MaxSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 11408986, guid: c1993f35cc832d944841fed0e441d5e4, type: 2}
+      propertyPath: m_JumpForce
+      value: 200
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c1993f35cc832d944841fed0e441d5e4, type: 2}
   m_IsPrefabParent: 0
@@ -182,7 +214,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 353949998}
   - 212: {fileID: 353949999}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: shelv
   m_TagString: LevelObstacles
   m_Icon: {fileID: 0}
@@ -241,7 +273,7 @@ GameObject:
   - 4: {fileID: 363526460}
   - 212: {fileID: 363526461}
   - 61: {fileID: 363526462}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: desk and stuff
   m_TagString: LevelObstacles
   m_Icon: {fileID: 0}
@@ -389,7 +421,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
 --- !u!1 &474631731
 GameObject:
   m_ObjectHideFlags: 0
@@ -418,6 +450,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eccf4a7c36a3a41fcb6d068e603acde2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _monkey: {fileID: 1280600334}
+  _sloth: {fileID: 1950402733}
+  _monkeyCarrySloth: {fileID: 565032895}
+  _slothCarryMonkey: {fileID: 303505786}
+  _isSlothOutOfHisCage: 0
   speed: 1
 --- !u!212 &474631733
 SpriteRenderer:
@@ -458,9 +495,10 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.91, y: -0.03, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 970717226}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 10
 --- !u!1 &565032895 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 144508, guid: 049819c4ca95be74ba9cdbb7f661e22a, type: 2}
@@ -478,6 +516,61 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _equippedItem: {fileID: 0}
   isReadyForAction: 0
+--- !u!1 &588635015
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 588635018}
+  - 61: {fileID: 588635017}
+  - 114: {fileID: 588635016}
+  m_Layer: 0
+  m_Name: MonkeyScreamCheckpoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &588635016
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 588635015}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd3019333ab05497e8cafd7502a8e1c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guard: {fileID: 474631731}
+--- !u!61 &588635017
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 588635015}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+--- !u!4 &588635018
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 588635015}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.19, y: -1.09, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
 --- !u!1 &878881744
 GameObject:
   m_ObjectHideFlags: 0
@@ -487,7 +580,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 878881745}
   - 212: {fileID: 878881746}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: lamb
   m_TagString: LevelObstacles
   m_Icon: {fileID: 0}
@@ -536,20 +629,24 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
+--- !u!4 &970717226 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 403008, guid: 9d4e0c498d0b94758bb482635a65548a, type: 2}
+  m_PrefabInternal: {fileID: 993449020}
 --- !u!1001 &993449020
 Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 474631734}
     m_Modifications:
     - target: {fileID: 403008, guid: 9d4e0c498d0b94758bb482635a65548a, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -4.42
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 403008, guid: 9d4e0c498d0b94758bb482635a65548a, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -1.31
+      value: -0.48
       objectReference: {fileID: 0}
     - target: {fileID: 403008, guid: 9d4e0c498d0b94758bb482635a65548a, type: 2}
       propertyPath: m_LocalPosition.z
@@ -573,7 +670,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 403008, guid: 9d4e0c498d0b94758bb482635a65548a, type: 2}
       propertyPath: m_RootOrder
-      value: 9
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6121918, guid: 9d4e0c498d0b94758bb482635a65548a, type: 2}
+      propertyPath: m_Size.x
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 6121918, guid: 9d4e0c498d0b94758bb482635a65548a, type: 2}
+      propertyPath: m_Size.y
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9d4e0c498d0b94758bb482635a65548a, type: 2}
@@ -635,7 +740,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 9
 --- !u!1 &1147589741
 GameObject:
   m_ObjectHideFlags: 0
@@ -737,11 +842,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1280600334}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ab836bbcc6b942fd93dd7e4bc6f85b3, type: 3}
+  m_Script: {fileID: 11500000, guid: 657b8ea66781b47379eef667018459de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _equippedItem: {fileID: 0}
-  isReadyForAction: 0
 --- !u!1 &1307450819
 GameObject:
   m_ObjectHideFlags: 0
@@ -881,7 +984,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
 --- !u!114 &1444439939
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -944,6 +1047,14 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 11401182, guid: 2bb037b0668846e44b3f728b40e4771c, type: 2}
+      propertyPath: m_MaxSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 11401182, guid: 2bb037b0668846e44b3f728b40e4771c, type: 2}
+      propertyPath: m_JumpForce
+      value: 200
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2bb037b0668846e44b3f728b40e4771c, type: 2}
   m_IsPrefabParent: 0
@@ -956,7 +1067,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 413792, guid: 172d997f33c3840a281e765b0c944f97, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0.295
+      value: -4.52
       objectReference: {fileID: 0}
     - target: {fileID: 413792, guid: 172d997f33c3840a281e765b0c944f97, type: 2}
       propertyPath: m_LocalPosition.y
@@ -1088,7 +1199,7 @@ GameObject:
   - 61: {fileID: 1878550767}
   - 61: {fileID: 1878550766}
   - 114: {fileID: 1878550765}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: MonkeyCage Door
   m_TagString: Door
   m_Icon: {fileID: 0}
@@ -1150,19 +1261,6 @@ BoxCollider2D:
 GameObject:
   m_PrefabParentObject: {fileID: 191118, guid: 2bb037b0668846e44b3f728b40e4771c, type: 2}
   m_PrefabInternal: {fileID: 1573999237}
---- !u!114 &1950402743
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1950402733}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ab836bbcc6b942fd93dd7e4bc6f85b3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _equippedItem: {fileID: 0}
-  isReadyForAction: 0
 --- !u!1 &2081493944
 GameObject:
   m_ObjectHideFlags: 0
@@ -1274,6 +1372,14 @@ Prefab:
     - target: {fileID: 416926, guid: 4dbd8a33c25a86c44b6c08f8bf33c467, type: 2}
       propertyPath: m_RootOrder
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 11440220, guid: 4dbd8a33c25a86c44b6c08f8bf33c467, type: 2}
+      propertyPath: m_MaxSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 11440220, guid: 4dbd8a33c25a86c44b6c08f8bf33c467, type: 2}
+      propertyPath: m_JumpForce
+      value: 200
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4dbd8a33c25a86c44b6c08f8bf33c467, type: 2}
