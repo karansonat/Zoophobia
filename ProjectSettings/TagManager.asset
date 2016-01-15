@@ -6,6 +6,7 @@ TagManager:
   tags:
   - ActivePlayer
   - Door
+  - LevelObstacles
   layers:
   - Default
   - TransparentFX
