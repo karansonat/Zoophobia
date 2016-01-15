@@ -15,12 +15,13 @@ public class Flow : MonoBehaviour {
 	//Character prefabs
 	public GameObject _slothCarryMonkey;
 	public GameObject _monkeyCarrySloth;
+
 	public GameObject _playerCombine;
 	public GameObject _playerSloth;
 	public GameObject _playerMonkey;
 	
 	private int _carryMode;
-	private int _activeCharacter;
+	public int _activeCharacter;
 	private bool isHoldingDone;
 	private CharachtersUIController UIController;
 	
@@ -28,12 +29,13 @@ public class Flow : MonoBehaviour {
 	
 	// Use this for initialization
 	void Start () {
-		_carryMode = (int)CARRY_MODE.COMBINE;
-		_activeCharacter = (int)ACTIVE_CHARACTER.MONKEY;
-		_playerCombine.SetActive(true);
-		_playerMonkey.SetActive(false);
-		_playerSloth.SetActive(false);
+		_carryMode = (int)CARRY_MODE.SEPERATE;
+		_activeCharacter = (int)ACTIVE_CHARACTER.SLOTH;
+		_playerCombine.SetActive(false);
+		_playerMonkey.SetActive(true);
+		_playerSloth.SetActive(true);
 		_slothCarryMonkey.SetActive(false);
+        _monkeyCarrySloth.SetActive(false);
 		UIController = gameObject.GetComponent<CharachtersUIController>();
 
 
@@ -67,8 +69,16 @@ public class Flow : MonoBehaviour {
 			_playerCombine.SetActive(false);
 			_playerMonkey.SetActive(true);
 			_playerSloth.SetActive(true);
-
-
+            switch (_activeCharacter){
+                case (int)ACTIVE_CHARACTER.MONKEY:
+                    _playerMonkey.GetComponent<Platformer2DUserControl>().enabled = true;
+                    _playerSloth.GetComponent<Platformer2DUserControl>().enabled = false;
+                    break;
+                case (int)ACTIVE_CHARACTER.SLOTH:
+                    _playerSloth.GetComponent<Platformer2DUserControl>().enabled = true;
+                    _playerMonkey.GetComponent<Platformer2DUserControl>().enabled = false;
+                    break;
+            }
 			break;
 		case (int)CARRY_MODE.SEPERATE:
 			_carryMode = (int)CARRY_MODE.COMBINE;
@@ -89,7 +99,6 @@ public class Flow : MonoBehaviour {
 				_playerCombine = _slothCarryMonkey;
 				_slothCarryMonkey.SetActive(true);
 				_monkeyCarrySloth.SetActive(false);
-				Debug.Log("");
 				break;
 			case (int)ACTIVE_CHARACTER.SLOTH:
 				_activeCharacter = (int)ACTIVE_CHARACTER.MONKEY;
@@ -103,11 +112,13 @@ public class Flow : MonoBehaviour {
 			switch (_activeCharacter){
 			case (int)ACTIVE_CHARACTER.MONKEY:
 				_activeCharacter = (int)ACTIVE_CHARACTER.SLOTH;
+                _playerCombine = _slothCarryMonkey;
 				_playerMonkey.GetComponent<Platformer2DUserControl>().enabled = false;
 				_playerSloth.GetComponent<Platformer2DUserControl>().enabled = true;
 				break;
 			case (int)ACTIVE_CHARACTER.SLOTH:
 				_activeCharacter = (int)ACTIVE_CHARACTER.MONKEY;
+                _playerCombine = _monkeyCarrySloth;
 				_playerSloth.GetComponent<Platformer2DUserControl>().enabled = false;
 				_playerMonkey.GetComponent<Platformer2DUserControl>().enabled = true;
 				break;
@@ -121,7 +132,7 @@ public class Flow : MonoBehaviour {
 			if(!isHoldingDone){
 				_switchTimer += Time.deltaTime;
 				if(_switchTimer >= 0.5f){
-
+                    Debug.Log("Flow::Before-SwitchCarryMode");
 					isHoldingDone = true;
 					SwitchCarryMode();
 				}
@@ -130,7 +141,7 @@ public class Flow : MonoBehaviour {
 		else if(Input.GetKeyUp(KeyCode.Tab)){
 
 			if(_switchTimer<0.5f){
-
+                Debug.Log("Flow::Before-SwitchCharacterControl");
 				SwitchCharacterControl();
 
 			}
