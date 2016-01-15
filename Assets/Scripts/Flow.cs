@@ -21,6 +21,8 @@ public class Flow : MonoBehaviour {
 	
 	private int _carryMode;
 	private int _activeCharacter;
+	private bool isHoldingDone;
+	private CharachtersUIController UIController;
 	
 	private float _switchTimer = 0;
 	
@@ -32,11 +34,29 @@ public class Flow : MonoBehaviour {
 		_playerMonkey.SetActive(false);
 		_playerSloth.SetActive(false);
 		_slothCarryMonkey.SetActive(false);
+		UIController = gameObject.GetComponent<CharachtersUIController>();
+
+
+		isHoldingDone = false;
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		CharacterControlProcess();	
+
+		if(_carryMode == (int)CARRY_MODE.COMBINE){
+			if(_activeCharacter == (int)ACTIVE_CHARACTER.MONKEY){
+				UIController.SetPositionsfForMonkeyCarries();
+			}else if(_activeCharacter == (int)ACTIVE_CHARACTER.SLOTH){
+				UIController.SetPositionsfForSlothCarries();
+			}
+		}else{
+			UIController.SetSeperatedPos();
+
+
+			
+		}
+		UIController.FadeControl((int)_carryMode,(int)_activeCharacter);
 	}
 	//TODO(sonat): Karakterlerin pozisyonlari set edilecek.
 	private void SwitchCarryMode(){
@@ -98,21 +118,26 @@ public class Flow : MonoBehaviour {
 	
 	private void CharacterControlProcess(){
 		if(Input.GetKey(KeyCode.Tab)){
-			_switchTimer += Time.deltaTime;
-			if(_switchTimer > 0.5f){
-				_switchTimer = 0;
-				SwitchCarryMode();
+			if(!isHoldingDone){
+				_switchTimer += Time.deltaTime;
+				if(_switchTimer >= 0.5f){
 
+					isHoldingDone = true;
+					SwitchCarryMode();
+				}
 			}
 		}
 		else if(Input.GetKeyUp(KeyCode.Tab)){
-			if(_switchTimer > 0.5f){
-				_switchTimer = 0;
-				SwitchCarryMode();
-			}else{
-				_switchTimer = 0;
+
+			if(_switchTimer<0.5f){
+
 				SwitchCharacterControl();
+
 			}
+			_switchTimer = 0;
+			isHoldingDone = false;
 		}
 	}
+
+
 }
