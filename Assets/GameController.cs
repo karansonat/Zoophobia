@@ -1,7 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+public delegate void SoundHeardEventHandler(Vector3 soundPosition);
 public class GameController : MonoBehaviour {
+    public static event SoundHeardEventHandler SoundHeard;
     // private GameObject[] players = new GameObject[3];
     private GameObject _activePlayer;
 	// Use this for initialization
@@ -28,5 +30,10 @@ public class GameController : MonoBehaviour {
     public GameObject getActivePlayer(){
         Debug.Log("GameController::getActivePlayer::getted");
         return _activePlayer;
+    }
+    public virtual void onSoundHeard( Vector3 soundPosition){
+        if(SoundHeard != null){
+            SoundHeard(soundPosition);
+        }
     }
 }
