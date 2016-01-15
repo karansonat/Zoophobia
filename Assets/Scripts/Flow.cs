@@ -11,7 +11,7 @@ public enum ACTIVE_CHARACTER{
 	MONKEY,
 }
 public class Flow : MonoBehaviour {
-	
+    Vector3 temp;	
 	//Character prefabs
 	public GameObject _slothCarryMonkey;
 	public GameObject _monkeyCarrySloth;
@@ -82,6 +82,8 @@ public class Flow : MonoBehaviour {
                     _playerMonkey.GetComponent<Platformer2DUserControl>().enabled = false;
                     break;
             }
+            _playerMonkey.transform.position = _playerCombine.transform.position;
+            _playerSloth.transform.position = _playerCombine.transform.position;
 			break;
 		case (int)CARRY_MODE.SEPERATE:
             if(isCharactersCloseToEachOther){
@@ -89,6 +91,7 @@ public class Flow : MonoBehaviour {
                 _playerCombine.SetActive(true);
                 _playerMonkey.SetActive(false);
                 _playerSloth.SetActive(false);
+                _playerCombine.transform.position = _playerSloth.transform.position;
                 break;
             }else{
                 break;
@@ -102,18 +105,22 @@ public class Flow : MonoBehaviour {
 		case (int)CARRY_MODE.COMBINE:
 			switch (_activeCharacter){
 			case (int)ACTIVE_CHARACTER.MONKEY:
+                temp = _playerCombine.transform.position;
 				_activeCharacter = (int)ACTIVE_CHARACTER.SLOTH;
 				_playerCombine = _slothCarryMonkey;
 				_slothCarryMonkey.SetActive(true);
 				_monkeyCarrySloth.SetActive(false);
 				break;
 			case (int)ACTIVE_CHARACTER.SLOTH:
+                temp = _playerCombine.transform.position;
 				_activeCharacter = (int)ACTIVE_CHARACTER.MONKEY;
 				_playerCombine = _monkeyCarrySloth;
 				_slothCarryMonkey.SetActive(false);
 				_monkeyCarrySloth.SetActive(true);
 				break;
 			}
+            _playerCombine.transform.position = temp;
+            temp = Vector3.zero;
 			break;
 		case (int)CARRY_MODE.SEPERATE:
 			switch (_activeCharacter){
