@@ -8,15 +8,14 @@ public class CharachtersUIController : MonoBehaviour {
 	public Image MonkeyImage;
 
 
-
-	public static float _CARRY_Y = -140f;
-	public static float _CARRY_X = -200f;
-	public static float _CARRIED_Y = -80f;
-	public static float _CARRIED_X = -200f;
-	public static float _SEPERATED_MONKEY_X = -250f;
-	public static float _SEPERATED_MONKEY_Y = -100f;
-	public static float _SEPERATED_SLOTH_X = -150f;
-	public static float _SEPERATED_SLOTH_Y = -100f;
+    public static float _CARRY_X = 70f;
+	public static float _CARRY_Y = -110f;
+    public static float _CARRIED_X = 70f;
+	public static float _CARRIED_Y = -50f;
+	public static float _SEPERATED_MONKEY_X = 20;
+	public static float _SEPERATED_MONKEY_Y = -70;
+	public static float _SEPERATED_SLOTH_X = 120;
+	public static float _SEPERATED_SLOTH_Y = -70f;
 
 	public void FadeControl(int carryMode, int character){
 		if(carryMode == (int)CARRY_MODE.SEPERATE){
