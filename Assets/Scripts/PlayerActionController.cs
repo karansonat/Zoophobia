@@ -5,6 +5,7 @@ public class PlayerActionController : MonoBehaviour {
     GameObject _game;
     Inventory _inventory;
     GameController _gameController;
+    Flow _flow;
     public GameObject _equippedItem;
     private GameObject _interactionObject;
     
@@ -16,6 +17,7 @@ public class PlayerActionController : MonoBehaviour {
 	   _game = GameObject.Find("Game");
        _gameController = _game.GetComponent<GameController>();
        _inventory = _game.GetComponent<Inventory>();
+       _flow = _game.GetComponent<Flow>();
 	}
 	
 	// Update is called once per frame
@@ -91,5 +93,17 @@ public class PlayerActionController : MonoBehaviour {
     }
     public void setInteractionObject(GameObject interactionObj){
         _interactionObject = interactionObj;
+    }
+    
+    void OnTriggerEnter2D(Collider2D col){
+        if(col.gameObject.tag == "Player"){
+            _flow.isCharactersCloseToEachOther = true;
+        }
+    }
+    
+    void OnTriggerExit2D(Collider2D col){
+        if(col.gameObject.tag == "Player"){
+            _flow.isCharactersCloseToEachOther = false;
+        }
     }
 }

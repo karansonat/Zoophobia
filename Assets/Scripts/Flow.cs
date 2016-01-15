@@ -23,6 +23,8 @@ public class Flow : MonoBehaviour {
 	private int _carryMode;
 	public int _activeCharacter;
 	private bool isHoldingDone;
+    [HideInInspector]
+    public bool isCharactersCloseToEachOther = false;
 	private CharachtersUIController UIController;
 	
 	private float _switchTimer = 0;
@@ -37,7 +39,8 @@ public class Flow : MonoBehaviour {
 		_slothCarryMonkey.SetActive(false);
         _monkeyCarrySloth.SetActive(false);
 		UIController = gameObject.GetComponent<CharachtersUIController>();
-
+        _playerSloth.GetComponent<Platformer2DUserControl>().enabled = true;
+        _playerMonkey.GetComponent<Platformer2DUserControl>().enabled = false;
 
 		isHoldingDone = false;
 	}
@@ -81,11 +84,15 @@ public class Flow : MonoBehaviour {
             }
 			break;
 		case (int)CARRY_MODE.SEPERATE:
-			_carryMode = (int)CARRY_MODE.COMBINE;
-			_playerCombine.SetActive(true);
-			_playerMonkey.SetActive(false);
-			_playerSloth.SetActive(false);
-			break;   
+            if(isCharactersCloseToEachOther){
+                _carryMode = (int)CARRY_MODE.COMBINE;
+                _playerCombine.SetActive(true);
+                _playerMonkey.SetActive(false);
+                _playerSloth.SetActive(false);
+                break;
+            }else{
+                break;
+            }   
 		}
 	}
 	
