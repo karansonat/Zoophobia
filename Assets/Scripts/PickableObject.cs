@@ -12,7 +12,8 @@ public class PickableObject : MonoBehaviour, IActionObject {
     public GameObject inventoryObjectPrefab;
     public string infoText = "ex: Press E for action";
     public bool destroyAfterPickup = false;
-    private MeshRenderer _infoText;
+    
+    private MeshRenderer _infoTextMeshRenderer;
     private bool _isInputAcceptable = false;
     private bool _isActionDescriptorShowing = false;
     
@@ -21,9 +22,11 @@ public class PickableObject : MonoBehaviour, IActionObject {
 	   _game = GameObject.Find("Game");
        _gameController = _game.GetComponent<GameController>();
        _inventory = _game.GetComponent<Inventory>();
-       _infoText = gameObject.GetComponentInChildren<MeshRenderer>();
-       _infoText.gameObject.GetComponent<TextMesh>().text = infoText;
-       _infoText.enabled = false;
+       _infoTextMeshRenderer = gameObject.GetComponentInChildren<MeshRenderer>();
+       _infoTextMeshRenderer.sortingLayerID = SortingLayer.layers[SortingLayer.layers.Length-1].id;
+       
+       _infoTextMeshRenderer.gameObject.GetComponent<TextMesh>().text = infoText;
+       _infoTextMeshRenderer.enabled = false;
 	}
     
 	void Update () {
@@ -45,11 +48,11 @@ public class PickableObject : MonoBehaviour, IActionObject {
     }
     public void ShowActionDescription(){
         _isInputAcceptable = true;
-        _infoText.enabled = true;
+        _infoTextMeshRenderer.enabled = true;
     }
     public void HideActionDescription(){
         _isInputAcceptable = false;
-        _infoText.enabled = false;
+        _infoTextMeshRenderer.enabled = false;
     }
     void OnTriggerEnter2D(Collider2D col){
         if(col.gameObject.tag == "Player"){
