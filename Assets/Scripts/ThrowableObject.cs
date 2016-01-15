@@ -60,7 +60,7 @@ public class ThrowableObject : MonoBehaviour, IUsableObject {
             clone.SetActive(true);
             Debug.Log("PickableObject::Throw");
             Vector3 direction = getDirectionBetweenTwoPoint(_activePlayer.transform.position, _aimIndicator.transform.GetChild(0).transform.position);
-            clone.GetComponent<Rigidbody2D>().AddForce(direction*1000);   
+            clone.GetComponent<Rigidbody2D>().AddForce(direction*500);   
             
             _isItemReadyToUse = false;
             Destroy(_aimIndicator);
