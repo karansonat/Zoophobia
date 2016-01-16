@@ -50,10 +50,10 @@ public class ThrowableObject : MonoBehaviour, IUsableObject {
     
     private void Aim(){
         if(Input.GetKey(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.UpArrow)){
-            _aimIndicator.transform.Rotate(new Vector3(0,0,5));
+            _aimIndicator.transform.Rotate(new Vector3(0,0,1f));
         }
         if(Input.GetKey(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.DownArrow)){
-            _aimIndicator.transform.Rotate(new Vector3(0,0,-5));
+            _aimIndicator.transform.Rotate(new Vector3(0,0,-1f));
         }
         if(Input.GetKeyDown(KeyCode.F)){
             _actionState = (int)THROW_ACTION.READY;

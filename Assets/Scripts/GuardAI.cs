@@ -12,6 +12,7 @@ public class GuardAI : MonoBehaviour {
     public float speed = 10f;
     private float _noticedTimeCounter = 0;
     private Vector3 _initialPosition;
+    private Vector3 _slothInitialPosition;
     private Vector3 _lastSoundPosition;
     private GUARD_AI _guardFlow = GUARD_AI.SLEEP;
     
@@ -25,6 +26,7 @@ public class GuardAI : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        _slothInitialPosition = _sloth.transform.position;
         _initialPosition = transform.position;
 	   GameController.SoundHeard += onSoundHeard;
 	}
@@ -71,7 +73,6 @@ public class GuardAI : MonoBehaviour {
         if(_isSlothOutOfHisCage){
             Debug.Log("GuardAI::_isSlothOutOfHisCage::true");
             MoveTo(_sloth.transform.position);
-            _isSlothOutOfHisCage = false;
         }else{
             Debug.Log("GuardAI::_isSlothOutOfHisCage::false");
             if(_moveToTargetReached){
@@ -82,7 +83,6 @@ public class GuardAI : MonoBehaviour {
                 Debug.Log("GuardAI::_moveToTargetReached::false");
                 MoveTo(_lastSoundPosition);    
             }
-            
         }
     }
     private void Noticed(){
@@ -98,11 +98,12 @@ public class GuardAI : MonoBehaviour {
         }
     }
     
-    private void MoveTo(Vector3 position){
-        if(Mathf.Abs(transform.position.x - position.x) > 0.5f){
+    private void MoveTo(Vector3 pos){
+        if(Mathf.Abs(transform.position.x - pos.x) > 0.5f){
             float step = speed * Time.deltaTime;
-            transform.position = Vector3.MoveTowards(transform.position, new Vector3(position.x, transform.position.y, position.z), step);    
+            transform.position = Vector3.MoveTowards(transform.position, new Vector3(pos.x, transform.position.y, pos.z), step);    
         }else{
+            _isSlothOutOfHisCage = false;
             _moveToTargetReached = true;
         }
     }
@@ -116,6 +117,16 @@ public class GuardAI : MonoBehaviour {
     private void goToSleep(){
         _noticedTimeCounter = 0;
         _guardFlow = GUARD_AI.SLEEP;
+    }
+    
+    void OnTriggerEnter2D(Collider2D col){
+        if(_guardFlow != GUARD_AI.SLEEP && _isSlothOutOfHisCage &&col.tag == "Player"){
+            col.gameObject.transform.position = _slothInitialPosition;
+            _isSlothOutOfHisCage = false;
+            _guardFlow = GUARD_AI.BACK_TO_DESK;
+            GameObject.FindGameObjectWithTag("Door").GetComponent<Door>().Close();
+            Camera.main.gameObject.GetComponent<CameraControl>().checkPointReached = true;
+        }
     }
     
 }

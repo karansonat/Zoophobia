@@ -98,11 +98,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 483172, guid: 049819c4ca95be74ba9cdbb7f661e22a, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 3.67
+      value: -2.52
       objectReference: {fileID: 0}
     - target: {fileID: 483172, guid: 049819c4ca95be74ba9cdbb7f661e22a, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -0.2
+      value: 2.67
       objectReference: {fileID: 0}
     - target: {fileID: 483172, guid: 049819c4ca95be74ba9cdbb7f661e22a, type: 2}
       propertyPath: m_LocalPosition.z
@@ -144,11 +144,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 475210, guid: c1993f35cc832d944841fed0e441d5e4, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -0.45
+      value: -1.05
       objectReference: {fileID: 0}
     - target: {fileID: 475210, guid: c1993f35cc832d944841fed0e441d5e4, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 1.22
+      value: 2.69
       objectReference: {fileID: 0}
     - target: {fileID: 475210, guid: c1993f35cc832d944841fed0e441d5e4, type: 2}
       propertyPath: m_LocalPosition.z
@@ -408,6 +408,7 @@ GameObject:
   - 4: {fileID: 474631734}
   - 212: {fileID: 474631733}
   - 114: {fileID: 474631732}
+  - 61: {fileID: 474631735}
   m_Layer: 0
   m_Name: Dog_Guard
   m_TagString: Untagged
@@ -475,6 +476,20 @@ Transform:
   - {fileID: 970717226}
   m_Father: {fileID: 0}
   m_RootOrder: 10
+--- !u!61 &474631735
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 474631731}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 2.2916667, y: 2.95}
 --- !u!1 &487042326
 GameObject:
   m_ObjectHideFlags: 0
@@ -857,7 +872,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1147589741}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.486, y: -0.3070817, z: -1.453125}
+  m_LocalPosition: {x: -2.486, y: -0.47, z: -1.453125}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1878550764}
@@ -1609,7 +1624,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 416926, guid: 4dbd8a33c25a86c44b6c08f8bf33c467, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -0.278
+      value: -5.68
       objectReference: {fileID: 0}
     - target: {fileID: 416926, guid: 4dbd8a33c25a86c44b6c08f8bf33c467, type: 2}
       propertyPath: m_LocalPosition.y

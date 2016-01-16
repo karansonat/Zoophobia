@@ -15,7 +15,11 @@ public class Door : MonoBehaviour {
 
     public void Open(){
         Debug.Log("Door::Open");
-        Destroy(GetComponent<BoxCollider2D>());
+        GetComponent<BoxCollider2D>().enabled = false;
+    }
+    public void Close(){
+        Debug.Log("Door::Close");
+        GetComponent<BoxCollider2D>().enabled = true;
     }
 
     void OnTriggerEnter2D(Collider2D col){

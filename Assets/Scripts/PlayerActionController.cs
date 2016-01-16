@@ -56,18 +56,24 @@ public class PlayerActionController : MonoBehaviour {
                 Debug.Log("EquipFromInventory::Slot2");
                 if(_equippedItem){_equippedItem.GetComponent<IUsableObject>().Cancel();}
                 _equippedItem = _inventory.getItemFromInventory(1);
-                if(_equippedItem){
+                if(_equippedItem.GetComponent<ThrowableObject>() != null ? _equippedItem && gameObject.name == "Sloth"  : _equippedItem){
                     _gameController.setActivePlayer(gameObject);
                     _equippedItem.GetComponent<IUsableObject>().Equip(gameObject);
+                    _equippedItem.SetActive(false);
+                }else{
+                    _equippedItem.SetActive(false);
                 }
             }
             else if(Input.GetKeyDown(KeyCode.Alpha3)){
                 if(_equippedItem){_equippedItem.GetComponent<IUsableObject>().Cancel();}
                 Debug.Log("EquipFromInventory::Slot3");
                 _equippedItem = _inventory.getItemFromInventory(2);
-                if(_equippedItem){
+                if(_equippedItem.GetComponent<ThrowableObject>() != null ? _equippedItem && gameObject.name == "Sloth"  : _equippedItem){
                     _gameController.setActivePlayer(gameObject);
                     _equippedItem.GetComponent<IUsableObject>().Equip(gameObject);
+                    _equippedItem.SetActive(false);
+                }else{
+                    _equippedItem.SetActive(false);
                 }
             }
             else if(Input.GetKeyDown(KeyCode.Escape)){
