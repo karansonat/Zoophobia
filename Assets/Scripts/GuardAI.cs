@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 
 public class GuardAI : MonoBehaviour {
+    public Sprite SleepingGuard;
+    public Sprite IdleGuard;
     public GameObject _monkey;
     public GameObject _sloth;
     public GameObject _monkeyCarrySloth;
@@ -86,6 +88,7 @@ public class GuardAI : MonoBehaviour {
         }
     }
     private void Noticed(){
+        gameObject.GetComponent<SpriteRenderer>().sprite = IdleGuard;
         Debug.Log("GuardAI::Noticed");
         _noticedTimeCounter += Time.deltaTime;
         if(_isSlothOutOfHisCage){
@@ -117,6 +120,7 @@ public class GuardAI : MonoBehaviour {
     private void goToSleep(){
         _noticedTimeCounter = 0;
         _guardFlow = GUARD_AI.SLEEP;
+        gameObject.GetComponent<SpriteRenderer>().sprite = SleepingGuard;
     }
     
     void OnTriggerEnter2D(Collider2D col){

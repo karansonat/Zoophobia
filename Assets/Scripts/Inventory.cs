@@ -34,6 +34,7 @@ public class Inventory : MonoBehaviour {
         }
     }
     public void DeleteItemFromInventory(GameObject item){
+        Debug.Log("Inventory::Delete::IndexOfItem = " + inventory.IndexOf(item));
         inventory.Remove(item);
     }
     public bool hasEmptySlot(){
