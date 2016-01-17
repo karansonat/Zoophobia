@@ -285,6 +285,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ab836bbcc6b942fd93dd7e4bc6f85b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  selectedIcon1: {fileID: 0}
+  selectedIcon2: {fileID: 0}
+  selectedIcon3: {fileID: 0}
   _equippedItem: {fileID: 0}
   isReadyForAction: 0
 --- !u!212 &21265404

@@ -5,7 +5,7 @@ AnimatorController:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: SlothCharacterAnimator
+  m_Name: SlothCarryMonkeyAnimator
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: Speed
@@ -614,7 +614,7 @@ AnimatorState:
   m_SpeedParameterActive: 0
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: c0a32aa5206b400428f52a44b234c97f, type: 2}
+  m_Motion: {fileID: 7400000, guid: 3b3e0c34693d04ef494b8a8f14ccbd65, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -663,7 +663,7 @@ AnimatorState:
   m_SpeedParameterActive: 0
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: c0a32aa5206b400428f52a44b234c97f, type: 2}
+  m_Motion: {fileID: 7400000, guid: 3b3e0c34693d04ef494b8a8f14ccbd65, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -690,7 +690,7 @@ AnimatorState:
   m_SpeedParameterActive: 0
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 19bf9c5d4c01a864baffb3ac0dc54a9b, type: 2}
+  m_Motion: {fileID: 7400000, guid: 3b3e0c34693d04ef494b8a8f14ccbd65, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -715,7 +715,7 @@ AnimatorState:
   m_SpeedParameterActive: 0
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 1c4aa503092e12040ac412fec79b5d67, type: 2}
+  m_Motion: {fileID: 7400000, guid: 3b3e0c34693d04ef494b8a8f14ccbd65, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -787,7 +787,7 @@ AnimatorState:
   m_SpeedParameterActive: 0
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: c0a32aa5206b400428f52a44b234c97f, type: 2}
+  m_Motion: {fileID: 7400000, guid: 3b3e0c34693d04ef494b8a8f14ccbd65, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 

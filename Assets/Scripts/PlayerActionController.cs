@@ -1,12 +1,16 @@
 ﻿using UnityEngine;
 using System;
 using System.Collections;
+using UnityEngine.UI;
 
 public class PlayerActionController : MonoBehaviour {
     GameObject _game;
     Inventory _inventory;
     GameController _gameController;
     Flow _flow;
+	public GameObject selectedIcon1;
+	public GameObject selectedIcon2;
+	public GameObject selectedIcon3;
     public GameObject _equippedItem;
     private GameObject _interactionObject;
     
@@ -40,6 +44,9 @@ public class PlayerActionController : MonoBehaviour {
     private void EquipFromInventory(){
         try{
             if(Input.GetKeyDown(KeyCode.Alpha1)){
+				selectedIcon1.SetActive(true);
+				selectedIcon2.SetActive(false);
+				selectedIcon3.SetActive(false);
                 Debug.Log("EquipFromInventory::Slot1");
                 if(_equippedItem){_equippedItem.GetComponent<IUsableObject>().Cancel();}
                 _equippedItem = _inventory.getItemFromInventory(0);
@@ -53,31 +60,34 @@ public class PlayerActionController : MonoBehaviour {
                 }
             }
             else if(Input.GetKeyDown(KeyCode.Alpha2)){
-                Debug.Log("EquipFromInventory::Slot2");
+				selectedIcon1.SetActive(false);
+				selectedIcon2.SetActive(true);
+				selectedIcon3.SetActive(false);
+				Debug.Log("EquipFromInventory::Slot2");
                 if(_equippedItem){_equippedItem.GetComponent<IUsableObject>().Cancel();}
                 _equippedItem = _inventory.getItemFromInventory(1);
-                if(_equippedItem.GetComponent<ThrowableObject>() != null ? _equippedItem && gameObject.name == "Sloth"  : _equippedItem){
+                if(_equippedItem){
                     _gameController.setActivePlayer(gameObject);
                     _equippedItem.GetComponent<IUsableObject>().Equip(gameObject);
-                    _equippedItem.SetActive(false);
-                }else{
-                    _equippedItem.SetActive(false);
                 }
             }
             else if(Input.GetKeyDown(KeyCode.Alpha3)){
-                if(_equippedItem){_equippedItem.GetComponent<IUsableObject>().Cancel();}
+				selectedIcon1.SetActive(false);
+				selectedIcon2.SetActive(false);
+				selectedIcon3.SetActive(true);
+				if(_equippedItem){_equippedItem.GetComponent<IUsableObject>().Cancel();}
                 Debug.Log("EquipFromInventory::Slot3");
                 _equippedItem = _inventory.getItemFromInventory(2);
-                if(_equippedItem.GetComponent<ThrowableObject>() != null ? _equippedItem && gameObject.name == "Sloth"  : _equippedItem){
+                if(_equippedItem){
                     _gameController.setActivePlayer(gameObject);
                     _equippedItem.GetComponent<IUsableObject>().Equip(gameObject);
-                    _equippedItem.SetActive(false);
-                }else{
-                    _equippedItem.SetActive(false);
                 }
             }
             else if(Input.GetKeyDown(KeyCode.Escape)){
-                Debug.Log("EquipFromInventory::Cancel");
+				selectedIcon1.SetActive(false);
+				selectedIcon2.SetActive(false);
+				selectedIcon3.SetActive(false);
+				Debug.Log("EquipFromInventory::Cancel");
                 _equippedItem.GetComponent<IUsableObject>().Cancel();
                 _equippedItem = null;
             }
@@ -92,7 +102,9 @@ public class PlayerActionController : MonoBehaviour {
     }
     public void unEquip(){
         Debug.Log("PlayerActionController::unEquip");
+		_inventory.remove(_inventory.getInventory().IndexOf(_equippedItem));
         _inventory.getInventory()[_inventory.getInventory().IndexOf(_equippedItem)] = null;
+
         _equippedItem.transform.parent = null;
         _equippedItem.GetComponent<IUsableObject>().Cancel();
         _equippedItem = null;
