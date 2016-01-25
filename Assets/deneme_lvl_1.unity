@@ -1135,7 +1135,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1834204097
+  m_SortingLayerID: 906365433
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 1996844f4444a4a328f6dc8b21f28235, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1471,6 +1471,11 @@ Prefab:
       propertyPath: selectedIcon3
       value: 
       objectReference: {fileID: 2072920580}
+    - target: {fileID: 21265404, guid: 2bb037b0668846e44b3f728b40e4771c, type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 3eb44b5b13af74e619be6fffe150bbf8,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2bb037b0668846e44b3f728b40e4771c, type: 2}
   m_IsPrefabParent: 0
@@ -1571,7 +1576,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1834204097
+  m_SortingLayerID: 906365433
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: aa87e63b6e5104f05831127138633783, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1689,6 +1694,7 @@ GameObject:
   - 61: {fileID: 1878550766}
   - 114: {fileID: 1878550765}
   - 212: {fileID: 1878550768}
+  - 95: {fileID: 1878550769}
   m_Layer: 11
   m_Name: MonkeyCage Door
   m_TagString: Door
@@ -1703,7 +1709,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1878550763}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.005, y: 0, z: 0}
+  m_LocalPosition: {x: -0.0050001144, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1147589742}
@@ -1772,11 +1778,28 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 906365433
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 708af6d36229d44cca038fa8ea0954d1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
+--- !u!95 &1878550769
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1878550763}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: fb899dccc0c884874a39283d33593531, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &1950402733 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 191118, guid: 2bb037b0668846e44b3f728b40e4771c, type: 2}
@@ -1915,6 +1938,11 @@ Prefab:
       propertyPath: selectedIcon3
       value: 
       objectReference: {fileID: 2072920580}
+    - target: {fileID: 21207680, guid: 4dbd8a33c25a86c44b6c08f8bf33c467, type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: b23c051c5169645ec8434b75029c70db,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4dbd8a33c25a86c44b6c08f8bf33c467, type: 2}
   m_IsPrefabParent: 0

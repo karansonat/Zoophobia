@@ -128,7 +128,9 @@ public class GuardAI : MonoBehaviour {
             col.gameObject.transform.position = _slothInitialPosition;
             _isSlothOutOfHisCage = false;
             _guardFlow = GUARD_AI.BACK_TO_DESK;
-            GameObject.FindGameObjectWithTag("Door").GetComponent<Door>().Close();
+            GameObject doorGO = GameObject.FindGameObjectWithTag("Door");
+            Door door = doorGO.GetComponent<Door>();
+            door.Close();
             Camera.main.gameObject.GetComponent<CameraControl>().checkPointReached = true;
         }
     }

@@ -16,12 +16,12 @@ public class Door : MonoBehaviour {
     public void Open(){
         Debug.Log("Door::Open");
         GetComponent<BoxCollider2D>().enabled = false;
-        GetComponent<SpriteRenderer>().flipX = true;
+        GetComponent<Animator>().SetTrigger("DoorOpenTrigger");
     }
     public void Close(){
         Debug.Log("Door::Close");
         GetComponent<BoxCollider2D>().enabled = true;
-        GetComponent<SpriteRenderer>().flipX = false;
+        GetComponent<Animator>().SetTrigger("DoorCloseTrigger");
     }
 
     void OnTriggerEnter2D(Collider2D col){
