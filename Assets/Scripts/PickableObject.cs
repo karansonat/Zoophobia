@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 public enum THROW_ACTION{
     EQUIPPED,
@@ -75,5 +76,8 @@ public class PickableObject : MonoBehaviour, IActionObject {
     
     private void DestroyObjectAfterPickedUp(){
         Destroy(gameObject);
+    }
+
+    public void MakeAction(){
     }
 }

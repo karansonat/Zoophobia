@@ -12,6 +12,7 @@ public class PlayerActionController : MonoBehaviour {
 	public GameObject selectedIcon2;
 	public GameObject selectedIcon3;
     public GameObject _equippedItem;
+    public GameObject _actionObject;
     private GameObject _interactionObject;
     
     [HideInInspector]
@@ -39,6 +40,9 @@ public class PlayerActionController : MonoBehaviour {
         if(_equippedItem){
             _equippedItem.GetComponent<IUsableObject>().MakeAction();    
         }
+        // if(_actionObject){
+        //     _actionObject.GetComponent<IActionObject>().MakeAction();
+        // }
     }
     
     private void EquipFromInventory(){
@@ -128,5 +132,19 @@ public class PlayerActionController : MonoBehaviour {
         if(col.gameObject.tag == "Player"){
             _flow.isCharactersCloseToEachOther = false;
         }
+    }
+    
+    public void digAnimFinished(){
+        GameObject[] array = GameObject.FindGameObjectsWithTag("DiggingArea");
+        foreach (GameObject item in array){
+            DigArea da = item.GetComponent<DigArea>();
+            DigArea2 da2 = item.GetComponent<DigArea2>();
+            if(da){
+                da.completeDiggingAction();
+            }else{
+                da2.completeDiggingAction();
+            }
+        }            
+
     }
 }

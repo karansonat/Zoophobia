@@ -22,6 +22,7 @@ public class Flow : MonoBehaviour {
 	
 	private int _carryMode;
 	public int _activeCharacter;
+    public GameObject _activeCharacterObject;
 	private bool isHoldingDone;
     [HideInInspector]
     public bool isCharactersCloseToEachOther = false;
@@ -164,5 +165,29 @@ public class Flow : MonoBehaviour {
 		}
 	}
 
-
+    public GameObject getActiveCharacterObject(){
+        switch (_carryMode){
+		case (int)CARRY_MODE.COMBINE:
+            switch (_activeCharacter){
+                case (int)ACTIVE_CHARACTER.MONKEY:
+                    _activeCharacterObject = _playerCombine;
+                    break;
+                case (int)ACTIVE_CHARACTER.SLOTH:
+                    _activeCharacterObject = _playerCombine;
+                    break;
+            }
+			break;
+		case (int)CARRY_MODE.SEPERATE:
+            switch (_activeCharacter){
+                case (int)ACTIVE_CHARACTER.MONKEY:
+                    _activeCharacterObject = _playerMonkey;
+                    break;
+                case (int)ACTIVE_CHARACTER.SLOTH:
+                    _activeCharacterObject = _playerSloth;
+                    break;
+                }
+            break;   
+		}
+        return _activeCharacterObject;
+    }
 }

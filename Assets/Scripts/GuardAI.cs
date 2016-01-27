@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 
 public class GuardAI : MonoBehaviour {
+    Animator anim;
+    private GameObject[] DiggingAreas;
     public Sprite SleepingGuard;
     public Sprite IdleGuard;
     public GameObject _monkey;
@@ -25,11 +27,17 @@ public class GuardAI : MonoBehaviour {
         ON_ALERT,
         ACTION,
     }
-
+    void Awake(){
+        DiggingAreas = GameObject.FindGameObjectsWithTag("DiggingArea");
+        foreach(GameObject go in DiggingAreas){
+            go.SetActive(false);
+        }
+    }
 	// Use this for initialization
 	void Start () {
         _slothInitialPosition = _sloth.transform.position;
         _initialPosition = transform.position;
+        anim = gameObject.GetComponent<Animator>();
 	   GameController.SoundHeard += onSoundHeard;
 	}
 	
@@ -68,6 +76,7 @@ public class GuardAI : MonoBehaviour {
             transform.position = Vector3.MoveTowards(transform.position, new Vector3(_initialPosition.x, transform.position.y, _initialPosition.z), step);    
         }else{
             goToSleep();
+            anim.SetTrigger("sleep");
         }
     }
     private void onAlert(){
@@ -94,10 +103,12 @@ public class GuardAI : MonoBehaviour {
         if(_isSlothOutOfHisCage){
             _guardFlow = GUARD_AI.ON_ALERT;
             _noticedTimeCounter = 0;
+            anim.SetTrigger("walk");
         }
         else if(_noticedTimeCounter >= 5.0f){
             goToSleep();
             _noticedTimeCounter = 0;
+            anim.SetTrigger("sleep");
         }
     }
     
@@ -114,8 +125,8 @@ public class GuardAI : MonoBehaviour {
     private void onSoundHeard(Vector3 soundPosition){
         Debug.Log("GuardAI::SoundHeard");
         _lastSoundPosition = soundPosition;
-        if(_guardFlow == GUARD_AI.SLEEP){_guardFlow = GUARD_AI.NOTICED;}
-        else if(_guardFlow == GUARD_AI.NOTICED){_guardFlow = GUARD_AI.ON_ALERT;}
+        if(_guardFlow == GUARD_AI.SLEEP){_guardFlow = GUARD_AI.NOTICED;anim.SetTrigger("wakeUp");}
+        else if(_guardFlow == GUARD_AI.NOTICED){_guardFlow = GUARD_AI.ON_ALERT;anim.SetTrigger("walk");}
     }
     private void goToSleep(){
         _noticedTimeCounter = 0;
@@ -132,6 +143,9 @@ public class GuardAI : MonoBehaviour {
             Door door = doorGO.GetComponent<Door>();
             door.Close();
             Camera.main.gameObject.GetComponent<CameraControl>().checkPointReached = true;
+            foreach(GameObject go in DiggingAreas){
+                go.SetActive(true);
+            }
         }
     }
     

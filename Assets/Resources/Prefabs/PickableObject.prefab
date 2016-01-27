@@ -135,7 +135,7 @@ MonoBehaviour:
   inventoryObjectPrefab: {fileID: 120026, guid: dfcd49b5b008c4f7d99ea12dbd0fbf40,
     type: 2}
   infoText: (E) - Pick Rock
-  destroyAfterPickup: 0
+  destroyAfterPickup: 1
 --- !u!212 &21264240
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -192,6 +192,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_LocalPosition.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: destroyAfterPickup
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
